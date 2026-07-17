@@ -1,0 +1,12 @@
+#!/bin/bash
+# wrapper for 0day
+
+PANEL_DIR="/home/perfect/zeropanel"
+
+if [ ! -f "$PANEL_DIR/0panel.py" ]; then
+    echo "0day not found at $PANEL_DIR"
+    exit 1
+fi
+
+cd "$PANEL_DIR" || exit 1
+exec python3 "$PANEL_DIR/0panel.py" "$@"

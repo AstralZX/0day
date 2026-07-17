@@ -1,0 +1,14 @@
+#!/bin/bash
+# wrapper script for 0panel
+# just runs the python script from the right directory
+
+PANEL_DIR="/home/perfect/zeropanel"
+
+if [ ! -f "$PANEL_DIR/0panel.py" ]; then
+    echo "0panel not found at $PANEL_DIR"
+    echo "reinstall or check the path"
+    exit 1
+fi
+
+cd "$PANEL_DIR" || exit 1
+exec python3 "$PANEL_DIR/0panel.py" "$@"
