@@ -47,7 +47,7 @@ BANNER = r"""
 """
 
 def clr():
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def runcmd(cmd, timeout=30):
     # run a shell cmd and return output

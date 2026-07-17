@@ -10,7 +10,7 @@ from rich import box
 console = Console()
 
 def clr():
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def runcmd(cmd, t=30):
     try:
