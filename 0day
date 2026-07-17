@@ -1,12 +1,13 @@
 #!/bin/bash
-# wrapper for 0day
+# 0day wrapper - finds 0panel.py relative to this script
 
-PANEL_DIR="/home/perfect/zeropanel"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-if [ ! -f "$PANEL_DIR/0panel.py" ]; then
-    echo "0day not found at $PANEL_DIR"
+if [ ! -f "$SCRIPT_DIR/0panel.py" ]; then
+    echo "0day: 0panel.py not found in $SCRIPT_DIR"
+    echo "run setup.sh first"
     exit 1
 fi
 
-cd "$PANEL_DIR" || exit 1
-exec python3 "$PANEL_DIR/0panel.py" "$@"
+cd "$SCRIPT_DIR" || exit 1
+exec python3 "$SCRIPT_DIR/0panel.py" "$@"
